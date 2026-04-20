@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Avaliações Psicológicas - Psicóloga Roberta Cristine</title>
     <style>
+        /* --- VARIÁVEIS DO PROJETO --- */
         :root {
             --cor-principal: rgb(116, 186, 189);
             --cor-principal-transp: rgba(116, 186, 189, 0.8);
@@ -20,9 +21,9 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             min-height: 100vh; background-color: #fff;
             color: var(--cor-texto-escuro); line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* Justificação global de parágrafos */
         p { text-align: justify; }
 
         body::before {
@@ -33,8 +34,9 @@
             opacity: 0.30;
         }
 
+        /* --- CABEÇALHO --- */
         header {
-            position: sticky; top: 0; width: 100%; z-index: 1000;
+            position: relative; width: 100%; z-index: 1000;
             background: linear-gradient(var(--cor-principal-transp), var(--cor-principal-transp)), url('img/foto4.jpg');
             background-size: cover; background-position: center;
             display: flex; flex-direction: column; align-items: center;
@@ -53,7 +55,7 @@
             border: 2px solid white;
         }
 
-        .header-name { font-size: 2em; margin: 0; text-align: center; }
+        .header-name { font-size: 1.8em; margin: 0; text-align: center; padding: 0 10px; }
         .header-crp { font-size: 0.9em; color: var(--cor-texto-suave); font-weight: 600; }
 
         .menu-botoes { display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap; justify-content: center; }
@@ -63,33 +65,35 @@
             background-color: rgba(255, 255, 255, 0.6);
             padding: 8px 18px; border-radius: 20px;
             font-size: 0.85em; font-weight: bold;
-            border: 1px solid rgba(0, 0, 0, 0.3); transition: 0.2s;
+            border: 1px solid rgba(0, 0, 0, 0.3); transition: 0.3s;
             display: inline-block;
         }
 
         .nav-btn:hover { background-color: var(--cor-principal); color: white; transform: translateY(-2px); }
-
-        /* --- EFEITO AFUNDAR --- */
-        .nav-btn:active, .header-whatsapp:active, .social-item:active, .btn-voltar:active {
+        
+        .nav-btn:active, .header-whatsapp:active, .social-item:active {
             transform: scale(0.93) translateY(3px) !important;
-            box-shadow: inset 0 4px 8px rgba(0,0,0,0.15) !important;
+            box-shadow: inset 0 3px 8px rgba(0,0,0,0.2) !important;
             transition: 0.1s;
         }
 
+        .btn-voltar { background: #eee !important; color: #333 !important; }
+
+        /* --- CONTEÚDO --- */
         main {
-            width: 90%; max-width: 900px; margin: 60px auto;
+            width: 90%; max-width: 900px; margin: 40px auto;
             background: var(--cor-bg-secao); padding: 40px;
             border-radius: var(--raio-borda); box-shadow: var(--sombra-suave);
             border-top: 8px solid var(--cor-principal);
         }
 
-        h2 { color: #333; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-top: 30px; }
-        h3 { color: var(--cor-texto-suave); margin-top: 25px; }
+        h2 { color: var(--cor-principal); border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        h3 { color: var(--cor-texto-suave); margin-top: 5px; }
 
         .info-box {
             background: rgba(116, 186, 189, 0.1);
-            padding: 20px; border-radius: 15px;
-            margin: 20px 0; border-left: 5px solid var(--cor-principal);
+            padding: 25px; border-radius: 15px;
+            margin: 25px 0; border-left: 5px solid var(--cor-principal);
         }
 
         .header-whatsapp {
@@ -99,26 +103,37 @@
             font-weight: bold; font-size: 0.85em; transition: 0.3s;
         }
 
+        /* --- RODAPÉ --- */
         footer { width: 100%; background-color: #333; color: white; padding: 50px 0; text-align: center; }
-        footer p { text-align: center; } /* Garante o rodapé centralizado */
-
+        footer p { text-align: center; margin: 5px 0; }
+        
         .social-links { display: flex; justify-content: center; gap: 40px; margin-top: 15px; flex-wrap: wrap; }
         .social-item { color: white; text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 8px; transition: 0.3s; }
-        .social-item:hover { transform: translateY(-5px); color: var(--cor-principal); }
-        .social-item img { border-radius: 8px; }
 
-        /* Estilos do botão Voltar */
-        .btn-voltar {
-            background: #eee !important; 
-            color: #333 !important;
-            border: 1px solid #ccc;
-        }
-
+        /* --- MEDIA QUERY MOBILE --- */
         @media (max-width: 900px) {
-            .logo-image { position: static; width: 100px; height: 100px; }
-            .header-main-row { flex-direction: column; }
-            .header-whatsapp { position: static; margin-top: 15px; }
-            main { padding: 25px; width: 95%; }
+            header { padding: 15px 0; }
+            .header-main-row { flex-direction: column; width: 100%; gap: 15px; }
+            
+            .logo-image { 
+                position: static !important; 
+                margin: 0 auto !important; 
+                width: 110px !important; 
+                height: 110px !important; 
+            }
+
+            .header-name { font-size: 1.4em !important; }
+
+            .header-whatsapp { 
+                position: static !important; 
+                margin: 5px auto !important; 
+                width: fit-content;
+            }
+
+            main { padding: 25px; width: 92%; margin: 20px auto; }
+            .info-box { padding: 15px; }
+            h2 { font-size: 1.5em; }
+            h3 { font-size: 1.2em; }
         }
     </style>
 </head>
@@ -151,30 +166,22 @@
 
         <div class="info-box">
             <h3>Cirurgia Bariátrica</h3>
-            <p>A avaliação psicológica para cirurgia bariátrica é um momento de cuidado e acolhimento dentro de todo o processo. Mais do que uma etapa obrigatória, ela é uma oportunidade de olhar com atenção para a sua história, sua relação com a alimentação e suas expectativas em relação à cirurgia.</p>
-            <p>Nesse processo, são considerados aspectos como emoções, ansiedade, possíveis episódios de compulsão alimentar, autoestima, rotina, além da forma como você lida com mudanças e desafios. Também é importante entender se há uma rede de apoio e quais são os recursos internos que podem te ajudar nessa jornada.</p>
-            <p>A avaliação não tem como objetivo julgar ou “aprovar” simplesmente, mas sim compreender e preparar. Em alguns casos, pode ser indicado um acompanhamento psicológico antes e/ou depois da cirurgia, para que você se sinta mais seguro(a) e fortalecido(a) ao longo das mudanças.</p>
-            <p>Quando esse cuidado acontece de forma adequada, os benefícios vão muito além da cirurgia em si. Ele contribui para uma adaptação mais tranquila, para a construção de hábitos mais saudáveis e para um resultado mais duradouro, com mais qualidade de vida e bem-estar.</p>
+            <p>A avaliação psicológica para cirurgia bariátrica é uma oportunidade de olhar com atenção para a sua história e sua relação com a alimentação. O objetivo é compreender e preparar o paciente para a jornada, garantindo que ele tenha os recursos internos necessários para lidar com as mudanças.</p>
         </div>
 
         <div class="info-box">
             <h3>Vasectomia e Laqueadura</h3>
-            <p>A avaliação psicológica para procedimentos de esterilização cirúrgica — vasectomia e laqueadura tubária — é um momento importante de escuta, acolhimento e orientação. Mais do que uma etapa do processo, ela oferece um espaço seguro para refletir sobre uma decisão definitiva, que envolve não apenas o corpo, mas também aspectos emocionais e de vida.</p>
-            <p>Durante a avaliação, são considerados fatores como o momento atual, o desejo de não ter (ou não ter mais) filhos, a estabilidade dessa decisão ao longo do tempo, expectativas em relação ao procedimento, possíveis influências externas e o entendimento sobre o caráter permanente da cirurgia. Também são observados aspectos emocionais, como ansiedade, impulsividade e histórico pessoal.</p>
-            <p>O objetivo não é julgar ou dificultar o acesso ao procedimento, mas garantir que a decisão seja consciente, segura e alinhada com a sua realidade e seus valores. Quando necessário, o acompanhamento psicológico pode ajudar a amadurecer essa escolha com mais tranquilidade.</p>
-            <p>Uma avaliação bem conduzida traz mais clareza, segurança e confiança. Isso contribui para que o paciente siga com a decisão de forma mais consciente, reduzindo riscos de arrependimento e promovendo mais bem-estar no longo prazo.</p>
+            <p>Um espaço seguro para refletir sobre uma decisão definitiva. A avaliação garante que a escolha seja consciente e alinhada com seus valores, trazendo clareza e segurança para o procedimento cirúrgico.</p>
         </div>
 
         <div class="info-box">
-            <h3>Como é o processo!!!</h3>
-            <p>O processo de avaliação psicológica é simples, acolhedor e conduzido de forma individualizada. São encontros nos quais conversamos sobre sua história, seu momento de vida e sua decisão em relação ao procedimento.</p>
-            <p>Durante as sessões, são feitas perguntas e, quando necessário, podem ser utilizados instrumentos psicológicos de apoio, sempre de forma clara e respeitosa. O objetivo é compreender se a decisão está bem elaborada e consciente.</p>
-            <p>Ao final, é elaborado um parecer psicológico, que poderá ser utilizado no seu processo médico. Todo o acompanhamento é realizado com ética, sigilo e cuidado, priorizando o seu bem-estar em cada etapa.</p>
+            <h3>Como funciona o processo?</h3>
+            <p>O processo é simples e acolhedor. São realizados encontros individuais para conversar sobre seu momento de vida. Ao final, é elaborado o parecer psicológico necessário para o seu processo médico, sempre com ética e sigilo.</p>
         </div>
         
-        <div style="margin-top: 40px; text-align: center;">
-            <a href="index.html" class="nav-btn btn-voltar">← Voltar para o Início</a>
+        <div style="margin-top: 40px; text-align: center; display: flex; flex-direction: column; gap: 15px; align-items: center;">
             <a href="https://wa.me/5511948980427" class="nav-btn" style="background: #25d366; color: white; border: none;" target="_blank">Falar pelo WhatsApp</a>
+            <a href="index.html" class="nav-btn btn-voltar">← Voltar para o Início</a>
         </div>
     </main>
 
@@ -189,20 +196,16 @@
                 </svg>
                 <span>Google</span>
             </a>
-
             <a href="https://www.instagram.com/psicologa.robertacscorrea" target="_blank" class="social-item">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" width="40" alt="Instagram">
                 <span>Instagram</span>
             </a>
-
             <a href="https://www.linkedin.com/in/psicologarobertacorrea" target="_blank" class="social-item">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" width="40" alt="LinkedIn">
                 <span>LinkedIn</span>
             </a>
         </div>
-
         <hr style="width: 50%; opacity: 0.1; margin: 30px auto;">
-        
         <p>&copy; 2026 Roberta Cristine - Psicóloga Clínica | CRP/SP 06/163037</p>
         <p style="font-size: 0.8em; opacity: 0.7;">
             Desenvolvido por 

@@ -21,9 +21,9 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             min-height: 100vh; background-color: #fff;
             color: var(--cor-texto-escuro); line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* Justificação para parágrafos e itens de lista */
         p, .lista-detalhada li { text-align: justify; }
 
         body::before {
@@ -36,7 +36,7 @@
 
         /* --- CABEÇALHO --- */
         header {
-            position: sticky; top: 0; width: 100%; z-index: 1000;
+            position: relative; width: 100%; z-index: 1000;
             background: linear-gradient(var(--cor-principal-transp), var(--cor-principal-transp)), url('img/foto4.jpg');
             background-size: cover; background-position: center;
             display: flex; flex-direction: column; align-items: center;
@@ -55,10 +55,9 @@
             border: 2px solid white;
         }
 
-        .header-name { font-size: 2em; margin: 0; text-align: center; }
+        .header-name { font-size: 1.8em; margin: 0; text-align: center; padding: 0 10px; }
         .header-crp { font-size: 0.9em; color: var(--cor-texto-suave); font-weight: 600; }
 
-        /* --- NAVEGAÇÃO --- */
         .menu-botoes { display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap; justify-content: center; }
 
         .nav-btn {
@@ -72,28 +71,18 @@
 
         .nav-btn:hover { background-color: var(--cor-principal); color: white; transform: translateY(-2px); }
         
-        /* Efeito de clique unificado */
         .nav-btn:active, .header-whatsapp:active, .social-item:active {
             transform: scale(0.93) translateY(3px) !important;
             box-shadow: inset 0 3px 8px rgba(0,0,0,0.2) !important;
             transition: 0.1s;
         }
 
-        /* --- BOTÕES ESPECÍFICOS --- */
-        .btn-voltar {
-            background-color: #eee !important;
-            color: #333 !important;
-        }
-
-        .btn-whats-pagi {
-            background-color: #25d366 !important;
-            color: white !important;
-            border: none !important;
-        }
+        .btn-voltar { background-color: #eee !important; color: #333 !important; }
+        .btn-whats-pagi { background-color: #25d366 !important; color: white !important; border: none !important; }
 
         /* --- CONTEÚDO --- */
         main {
-            width: 90%; max-width: 900px; margin: 60px auto;
+            width: 90%; max-width: 900px; margin: 40px auto;
             background: var(--cor-bg-secao); padding: 40px;
             border-radius: var(--raio-borda); box-shadow: var(--sombra-suave);
             border-top: 8px solid var(--cor-principal);
@@ -114,18 +103,38 @@
 
         /* --- RODAPÉ --- */
         footer { width: 100%; background-color: #333; color: white; padding: 50px 0; text-align: center; }
-        footer p { text-align: center; } /* Garante o rodapé centralizado */
+        footer p { text-align: center; margin: 5px 0; }
         
         .social-links { display: flex; justify-content: center; gap: 40px; margin-top: 15px; flex-wrap: wrap; }
         .social-item { color: white; text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 8px; transition: 0.3s; }
-        .social-item:hover { transform: translateY(-5px); color: var(--cor-principal); }
-        .social-item img { border-radius: 8px; }
 
+        /* --- MEDIA QUERY MOBILE --- */
         @media (max-width: 900px) {
-            .logo-image { position: static; width: 100px; height: 100px; }
-            .header-main-row { flex-direction: column; }
-            .header-whatsapp { position: static; margin-top: 15px; }
-            main { padding: 25px; width: 95%; }
+            header { padding: 15px 0; }
+            .header-main-row { flex-direction: column; width: 100%; gap: 15px; }
+            
+            .logo-image { 
+                position: static !important; 
+                margin: 0 auto !important; 
+                width: 110px !important; 
+                height: 110px !important; 
+            }
+
+            .header-name { font-size: 1.4em !important; }
+
+            .header-whatsapp { 
+                position: static !important; 
+                margin: 5px auto !important; 
+                width: fit-content;
+            }
+
+            .menu-botoes { gap: 8px; padding: 0 10px; }
+            .nav-btn { padding: 6px 12px; font-size: 0.75em; }
+
+            main { padding: 25px; width: 92%; margin: 20px auto; }
+            h2 { font-size: 1.5em; }
+            
+            .social-links { gap: 20px; }
         }
     </style>
 </head>
@@ -157,19 +166,19 @@
         <p>A psicoterapia é um caminho de autoconhecimento e cuidado. Em meu consultório, trabalho com diversas frentes para auxiliar no equilíbrio emocional:</p>
         
         <ul class="lista-detalhada">
-            <li><strong>Ansiedade e Estresse:</strong> A psicoterapia ajuda você a compreender as causas da ansiedade e do estresse, indo além dos sintomas. Com apoio profissional, é possível desenvolver estratégias para lidar melhor com a sobrecarga emocional, trazendo mais equilíbrio e leveza para o dia a dia. Cuidar da mente é essencial para viver com mais tranquilidade.</li>
-            <li><strong>Depressão e Desânimo:</strong> Quando tudo parece pesado ou sem sentido, a psicoterapia oferece um espaço seguro para acolher suas dores. Aos poucos, é possível resgatar o sentido da vida, compreender suas emoções e encontrar caminhos para sair desse lugar. Você não precisa passar por isso sozinho(a).</li>
-            <li><strong>Dependência Emocional:</strong> A psicoterapia auxilia na construção de uma relação mais saudável consigo mesmo(a) e com o outro. Trabalha a autonomia emocional, fortalecendo sua autoestima e ajudando a criar vínculos mais equilibrados. Amar não precisa ser sinônimo de sofrimento.</li>
-            <li><strong>Luto e Perdas:</strong> O processo de luto é único e merece ser respeitado. A psicoterapia oferece acolhimento para atravessar esse momento com mais suporte emocional, ajudando na elaboração da perda e na reconstrução de sentidos. É um cuidado essencial em tempos difíceis.</li>
-            <li><strong>TDAH em Adultos:</strong> A psicoterapia ajuda a compreender melhor o funcionamento do TDAH na vida adulta, trazendo mais organização, clareza e estratégias práticas para o dia a dia. Também auxilia no manejo da ansiedade, da impulsividade e das dificuldades emocionais associadas.</li>
-            <li><strong>Conflitos Profissionais:</strong> Dificuldades no trabalho podem impactar diretamente seu bem-estar. A psicoterapia contribui para entender esses conflitos, melhorar a comunicação e desenvolver recursos para lidar com pressões e desafios. Cuidar da saúde emocional também é investir na sua vida profissional.</li>
+            <li><strong>Ansiedade e Estresse:</strong> A psicoterapia ajuda você a compreender as causas da ansiedade e do estresse, indo além dos sintomas. Com apoio profissional, é possível desenvolver estratégias para lidar melhor com a sobrecarga emocional, trazendo mais equilíbrio e leveza para o dia a dia.</li>
+            <li><strong>Depressão e Desânimo:</strong> Quando tudo parece pesado ou sem sentido, a psicoterapia oferece um espaço seguro para acolher suas dores. Aos poucos, é possível resgatar o sentido da vida e encontrar caminhos para sair desse lugar.</li>
+            <li><strong>Dependência Emocional:</strong> A psicoterapia auxilia na construção de uma relação mais saudável consigo mesmo(a) e com o outro. Trabalha a autonomia emocional, fortalecendo sua autoestima.</li>
+            <li><strong>Luto e Perdas:</strong> O processo de luto é único e merece ser respeitado. A psicoterapia oferece acolhimento para atravessar esse momento com mais suporte emocional, ajudando na elaboração da perda.</li>
+            <li><strong>TDAH em Adultos:</strong> A psicoterapia ajuda a compreender melhor o funcionamento do TDAH na vida adulta, trazendo mais organização, clareza e estratégias práticas para o dia a dia.</li>
+            <li><strong>Conflitos Profissionais:</strong> Dificuldades no trabalho podem impactar diretamente seu bem-estar. A psicoterapia contribui para entender esses conflitos e desenvolver recursos para lidar com pressões.</li>
         </ul>
 
-        <p style="margin-top: 30px;">Meu atendimento é fundamentado na abordagem psicodinâmica, que investiga conteúdos inconscientes, conflitos internos e padrões emocionais construídos ao longo da história de vida, visando compreender as origens do sofrimento psíquico.</p>
+        <p style="margin-top: 30px;">Meu atendimento é fundamentado na abordagem psicodinâmica, que investiga conteúdos inconscientes e padrões emocionais construídos ao longo da história de vida.</p>
         
-        <div style="margin-top: 40px; text-align: center;">
-            <a href="index.html" class="nav-btn btn-voltar">← Voltar para o Início</a>
+        <div style="margin-top: 40px; text-align: center; display: flex; flex-direction: column; gap: 15px; align-items: center;">
             <a href="https://wa.me/5511948980427" class="nav-btn btn-whats-pagi" target="_blank">Solicitar Agendamento</a>
+            <a href="index.html" class="nav-btn btn-voltar">← Voltar para o Início</a>
         </div>
     </main>
 
@@ -184,20 +193,16 @@
                 </svg>
                 <span>Google</span>
             </a>
-
             <a href="https://www.instagram.com/psicologa.robertacscorrea" target="_blank" class="social-item">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" width="40" alt="Instagram">
                 <span>Instagram</span>
             </a>
-
             <a href="https://www.linkedin.com/in/psicologarobertacorrea" target="_blank" class="social-item">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" width="40" alt="LinkedIn">
                 <span>LinkedIn</span>
             </a>
         </div>
-
         <hr style="width: 50%; opacity: 0.1; margin: 30px auto;">
-        
         <p>&copy; 2026 Roberta Cristine - Psicóloga Clínica | CRP/SP 06/163037</p>
         <p style="font-size: 0.8em; opacity: 0.7;">
             Desenvolvido por 
