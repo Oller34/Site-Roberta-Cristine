@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Psicóloga Roberta Cristine dos Santos Correa</title>
+    <style>
+        /* --- VARIÁVEIS E CONFIGURAÇÕES GERAIS --- */
+        :root {
+            --cor-principal: rgb(116, 186, 189);
+            --cor-principal-transp: rgba(116, 186, 189, 0.8);
+            --cor-bg-secao: rgba(255, 255, 255, 0.92);
+            --cor-texto-escuro: #000000;
+            --cor-texto-suave: #333333;
+            --raio-borda: 25px;
+            --sombra-suave: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0; padding: 0;
+            display: flex; flex-direction: column; align-items: center; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh; background-color: #fff;
+            color: var(--cor-texto-escuro); line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Justificação global de parágrafos */
+        p { text-align: justify; }
+
+        body::before {
+            content: ""; position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; background-image: url('img/Fundo.jpg');
+            background-size: cover; background-position: center;
+            background-repeat: no-repeat; opacity: 0.30;
+        }
+
+        /* --- CABEÇALHO --- */
+        header {
+            position: sticky; top: 0; width: 100%; z-index: 1000;
+            background: linear-gradient(var(--cor-principal-transp), var(--cor-principal-transp)), url('img/foto4.jpg');
+            background-size: cover; background-position: center;
+            display: flex; flex-direction: column; align-items: center;
+            padding: 20px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-main-row {
+            position: relative; display: flex; align-items: center;
+            justify-content: center; width: 90%; max-width: 1200px;
+        }
+
+        .logo-image {
+            position: absolute; top: 15px; left: -20px;
+            width: 100px; height: 100px; border-radius: 50%;
+            object-fit: cover; box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border: 2px solid white;
+            transition: all 0.3s ease;
+        }
+        .logo-image:hover { transform: scale(1.1) rotate(5deg); }
+
+        .header-name { font-size: 2em; margin: 0; text-align: center; color: black; }
+        .header-crp { font-size: 0.9em; color: var(--cor-texto-suave); font-weight: 600; }
+
+        /* --- SISTEMA DE INTERAÇÃO --- */
+        .nav-btn, .header-whatsapp, .btn-saiba-mais, .social-item {
+            transition: all 0.25s ease-in-out;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .nav-btn:hover, .header-whatsapp:hover, .btn-saiba-mais:hover, .social-item:hover, .profile-photo:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+        }
+
+        .nav-btn:active, .header-whatsapp:active, .btn-saiba-mais:active, .social-item:active {
+            transform: translateY(2px) scale(0.95) !important;
+            box-shadow: inset 0 4px 8px rgba(0,0,0,0.2) !important;
+            transition: 0.1s;
+        }
+
+        .nav-btn {
+            color: var(--cor-texto-escuro); background-color: rgba(255, 255, 255, 0.6);
+            padding: 8px 18px; border-radius: 20px; font-size: 0.85em; font-weight: bold;
+            border: 1px solid rgba(0, 0, 0, 0.3); display: inline-block;
+        }
+        .nav-btn:hover { background-color: var(--cor-principal); color: white; }
+
+        .header-whatsapp {
+            position: absolute; right: -10px; display: flex; align-items: center;
+            gap: 10px; background-color: #25d366; color: white;
+            padding: 10px 20px; border-radius: 30px; font-weight: bold; font-size: 0.85em;
+        }
+        .header-whatsapp:hover { background-color: #1ebe57; }
+
+        .btn-saiba-mais {
+            background-color: var(--cor-principal); color: white;
+            padding: 10px 25px; border-radius: 30px; font-weight: bold;
+            font-size: 0.9em; display: inline-block; margin-top: 15px;
+        }
+
+        /* --- CONTEÚDO --- */
+        .anchor-offset { display: block; position: relative; top: -220px; visibility: hidden; }
+
+        main { width: 95%; max-width: 1300px; display: flex; flex-direction: column; gap: 60px; margin-top: 40px; margin-bottom: 60px; }
+
+        .section-wrapper { display: flex; align-items: center; gap: 40px; width: 85%; max-width: 1000px; }
+        .section-wrapper.left { flex-direction: row; margin-right: 15%; margin-left: 10%; align-self: flex-start; }
+        .section-wrapper.right { flex-direction: row-reverse; margin-left: 15%; margin-right: 10%; align-self: flex-end; }
+
+        .welcome-section { background: var(--cor-bg-secao); padding: 40px; border-radius: var(--raio-borda); flex: 1; box-shadow: var(--sombra-suave); }
+        .section-wrapper.left .welcome-section { border-left: 8px solid var(--cor-principal); }
+        .section-wrapper.right .welcome-section { border-right: 8px solid var(--cor-principal); }
+
+        .photo-container { flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 15px; }
+        .profile-photo { 
+            width: 320px; height: 420px; border-radius: 40px; object-fit: cover; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15); border: 2px solid white;
+            transition: all 0.25s ease-in-out;
+            cursor: default;
+        }
+
+        /* Estilos específicos para a seção Áreas de Atuação */
+        .no-justify p { text-align: left; }
+        .atuacao-lista { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 10px; padding: 0; 
+            list-style: none; 
+            margin-top: 20px; 
+            text-align: left; /* Garante alinhamento à esquerda na lista */
+        }
+        .atuacao-lista li::before { content: "• "; color: var(--cor-principal); font-weight: bold; }
+
+        /* --- RODAPÉ --- */
+        footer { width: 100%; background-color: #333; color: white; padding: 50px 0; text-align: center; }
+        footer p { text-align: center; } /* Rodapé sempre centralizado */
+        .social-links { display: flex; justify-content: center; gap: 40px; margin-top: 15px; flex-wrap: wrap; }
+        .social-item { color: white; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+        .social-item:hover { color: var(--cor-principal); }
+
+        @media (max-width: 900px) {
+            .section-wrapper, .section-wrapper.left, .section-wrapper.right { flex-direction: column !important; width: 95%; margin: 0 auto; gap: 20px; }
+            .logo-image { position: static; width: 120px; height: 120px; margin-bottom: 10px; }
+            .header-whatsapp { position: static; margin-top: 10px; }
+            .atuacao-lista { grid-template-columns: 1fr; }
+            .profile-photo { width: 100%; max-width: 320px; height: auto; }
+            .anchor-offset { top: -250px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-main-row">
+            <img src="img/Logo.jpg" alt="Logo RC" class="logo-image">
+            <div class="name-container" style="display: flex; flex-direction: column; align-items: center;">
+                <h1 class="header-name">Psicóloga Roberta Cristine dos Santos Correa</h1>
+                <span class="header-crp">CRP/SP 06/163037</span>
+            </div>
+            <a href="https://wa.me/5511948980427" class="header-whatsapp" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="25">
+                <span>Agendar</span>
+            </a>
+        </div>
+        <br>
+        <nav class="menu-botoes">
+            <a href="index.html" class="nav-btn" style="background-color: var(--cor-principal); color: white;">HOME</a>
+            <a href="#sobre-mim-ancora" class="nav-btn">SOBRE MIM</a>
+            <a href="atuacao.html" class="nav-btn">ATUAÇÃO</a>
+            <a href="bariatrica.html" class="nav-btn">AVALIAÇÕES</a>
+        </nav>
+    </header>
+
+    <main>
+        <span id="sobre-mim-ancora" class="anchor-offset"></span>
+
+        <div class="section-wrapper left">
+            <section class="welcome-section">
+                <h2>Sobre mim</h2>
+                <p>Sou psicóloga formada pela Universidade Paulista, com trajetória construída a partir do interesse profundo pelo funcionamento emocional e pelas histórias que cada pessoa carrega.</p>
+                <p>Minha prática é orientada pela abordagem psicodinâmica, buscando compreender os sentidos mais profundos dos sentimentos e comportamentos.</p>
+                <p>Acredito que a psicoterapia é um espaço de construção — um lugar seguro onde você pode se escutar e encontrar novas formas de lidar com aquilo que te atravessa.</p>
+            </section>
+            <div class="photo-container">
+                <img src="img/perfil2.png" alt="Roberta Cristine" class="profile-photo">
+            </div>
+        </div>
+
+        <div class="section-wrapper right">
+            <section class="welcome-section">
+                <h2>Minhas formações</h2>
+                <p><strong>Graduada em Gestão de Recursos Humanos</strong> pela Universidade Bandeirantes em 2012.</p>
+                <p><strong>Graduada em Psicologia</strong> pela Universidade Paulista desde 2019.</p>
+                <p><strong>Pós Graduação em Avaliação Psicológica e Psicodiagnóstico</strong> pela faculdade Famart.</p>
+                <p><strong>Pós Graduação em Neuropsicologia com ênfase em reabilitação cognitiva</strong> pela faculdade Famart.</p>
+            </section>
+            <div class="photo-container">
+                <img src="img/minhas_formacoes.jpg" alt="Formações" class="profile-photo">
+            </div>
+        </div>
+
+        <div class="section-wrapper left">
+            <section class="welcome-section no-justify">
+                <h2>Áreas de Atuação</h2>
+                <p>Trabalho voltado ao cuidado da saúde emocional de adultos que enfrentam diversos desafios contemporâneos:</p>
+                <ul class="atuacao-lista">
+                    <li>Ansiedade e Pânico</li>
+                    <li>Depressão</li>
+                    <li>Dependência Emocional</li>
+                    <li>Autoestima</li>
+                    <li>Traumas e Luto</li>
+                    <li>TDAH Adulto</li>
+                </ul>
+            </section>
+            <div class="photo-container">
+                <img src="img/atuacao.png" alt="Atuação Clínica" class="profile-photo">
+                <a href="atuacao.html" class="btn-saiba-mais">Detalhes dos Serviços</a>
+            </div>
+        </div>
+
+        <div class="section-wrapper right">
+            <section class="welcome-section">
+                <h2>Avaliações Psicológicas</h2>
+                <p>Realizo avaliações cuidadosas para processos de cirurgia bariátrica e vasectomia/laqueadura, garantindo uma escuta ética e suporte emocional.</p>
+            </section>
+            <div class="photo-container">
+                <img src="img/avaliacoes.png" alt="Avaliação Psicológica" class="profile-photo">
+                <a href="bariatrica.html" class="btn-saiba-mais">Como funciona?</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://share.google/rYLQ1UreZUKMz5VV6" target="_blank" class="social-item">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                </svg>
+                <span>Google</span>
+            </a>
+            <a href="https://www.instagram.com/psicologa.robertacscorrea" target="_blank" class="social-item">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" width="40" alt="Instagram">
+                <span>Instagram</span>
+            </a>
+            <a href="https://www.linkedin.com/in/psicologarobertacorrea" target="_blank" class="social-item">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" width="40" alt="LinkedIn">
+                <span>LinkedIn</span>
+            </a>
+        </div>
+        <hr style="width: 50%; opacity: 0.1; margin: 30px auto;">
+        <p>&copy; 2026 Roberta Cristine - Psicóloga Clínica | CRP/SP 06/163037</p>
+        <p style="font-size: 0.8em; opacity: 0.7;">
+            Desenvolvido por 
+            <a href="https://www.linkedin.com/in/danilooller/" style="color: var(--cor-principal); text-decoration: none;" target="_blank">Danilo Oller</a>
+        </p>
+    </footer>
+
+</body>
+</html>
